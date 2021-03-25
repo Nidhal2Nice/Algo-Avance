@@ -1,19 +1,19 @@
 const tab = [3, 0, -7, 1, 4, -2, 8, 4, 5];
 let n = tab.length;
-// let changed = true;
+let changed = true;
 
-// while (changed) {
-//     changed = false;
-//     for(let i = 0; i < tab.length; i++) {
-//         if (tab [i] > tab [i + 1]) {
-//              let tmp = tab [i];
-//              tab[i] = tab[i + 1];
-//              tab[i + 1] = tmp;
-//             changed = true;
-//         }
-//     }
-// }
-// console.log(tab);
+while (changed) {
+    changed = false;
+    for (let i = 0; i < tab.length; i++) {
+        if (tab[i] > tab[i + 1]) {
+            let tmp = tab[i];
+            tab[i] = tab[i + 1];
+            tab[i + 1] = tmp;
+            changed = true;
+        }
+    }
+}
+console.log(tab);
 
 //========================Tri par insertion =======================//
 function swap(tab, i, j) {
