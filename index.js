@@ -82,17 +82,19 @@ function tri_fusion(tab) {
     if (n <= 1) {
         return tab;
     }
-    return fusion(triFusion(tab[1, n / 2]), triFusion(tab[n / 2 + 1, n]))
+    return fusion(triFusion(tab.slice(0, n / 2)), triFusion(tab.slice(n / 2 + 1, n)))
 }
-function fusion(tabA[1, ..., a], tabB[1, ..., b]) {
-    if (tabA[]) {
-        return B;
+function fusion(tabA, tabB) {
+    if (tabA.length == 0) {
+        return tabB;
     }
-    else if (tabB[]) {
-        return A
+    else if (tabB.length == 0) {
+        return tabA;
     }
-    else if (tabA[1] = < tabB[1]) {
-        return A[1].concat.fusion(A[2, ..., a], B);
+    else if (tabA[0] <= tabB[0]) {
+        return tabA[0].concat.fusion(tabA.slice(1, tabA.length), tabB);
     }
-    return
+    else {
+        return tabB[0].concat.fusion(tabB.slice(tabA, tabB.slice(tabB.length));
+    }
 }
