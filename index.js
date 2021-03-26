@@ -1,29 +1,35 @@
 const tab = [3, 0, -7, 1, 4, -2, 8, 4, 5];
-let n = tab.length;
+
 function swap(tab, i, j) {
     const temp = tab[i];
     tab[i] = tab[j];
     tab[j] = temp;
 }
 
-let changed = true;
 
-while (changed) {
-    changed = false;
-    for (let i = 0; i < tab.length; i++) {
-        if (tab[i] > tab[i + 1]) {
-            let tmp = tab[i];
-            tab[i] = tab[i + 1];
-            tab[i + 1] = tmp;
-            changed = true;
+console.log("avant tri : ", tab);
+function bubleSort(tab) {
+    tab = [...tab];
+    let changed = true;
+    while (changed) {
+        changed = false;
+        for (let i = 0; i < tab.length; i++) {
+            if (tab[i] > tab[i + 1]) {
+                let tmp = tab[i];
+                tab[i] = tab[i + 1];
+                tab[i + 1] = tmp;
+                changed = true;
+            }
         }
     }
 }
-console.log(tab);
+console.log("après tri : ", tab);
 
 //========================Tri par insertion =======================//
 
 function tri_insertion(tab) {
+    tab = [...tab];
+    let n = tab.length;
     for (i = 1; i < n; i++) {
         temp = tab[i];
         j = i;
@@ -34,17 +40,22 @@ function tri_insertion(tab) {
         tab[j] = temp;
     }
 }
+console.log("tri insertion")
+console.log("avant tri : ", tab);
 tri_insertion(tab);
 console.log(tab);
+console.log("après tri : ", tab);
 
 //========================Tri par sélection =======================//
 
-function swap(tab, i, j) {
-    const temp = tab[i];
-    tab[i] = tab[j];
-    tab[j] = temp;
-}
+// function swap(tab, i, j) {
+//     const temp = tab[i];
+//     tab[i] = tab[j];
+//     tab[j] = temp;
+// }
+
 function tri_selection(tab) {
+    tab = [...tab];
     const n = tab.length;
     for (i = 0; i < n; i++) {
         min = i;
@@ -57,12 +68,17 @@ function tri_selection(tab) {
     }
     return tab;
 }
+console.log("tri selection")
+console.log("avant tri : ", tab);
 console.log(tri_selection(tab));
+console.log("après tri : ", tab);
 
 //========================Tri par bulles =======================//
 
 
 function tri_bulle(tab) {
+    tab = [...tab];
+    const n = tab.length;
     let permut = true;
     while (permut) {
         permut = false;
@@ -80,14 +96,17 @@ console.log(tab);
 //========================Tri par fusion =======================//
 
 function triFusion(tab) {
+    tab = [...tab];
+    const n = tab.length;
     if (n <= 1) {
         return tab;
     }
-    let left = tab.slice(0, n / 2);
-    let right = tab.slice(n / 2 + 1, n);
-    let fusion = fusion(triFusion(left), triFusion(right));
+    let middle = Math.floor(n / 2)
+    let left = tab.slice(0, middle);
+    let right = tab.slice(middle, n);
+    let merge = fusion(triFusion(left), triFusion(right));
 
-    return fusion;
+    return merge;
 }
 function fusion(tabA, tabB) {
     if (tabA.length == 0) {
@@ -97,10 +116,14 @@ function fusion(tabA, tabB) {
         return tabA;
     }
     else if (tabA[0] <= tabB[0]) {
-        return tabA[0].concat.fusion(tabA.slice(1, tabA.length), tabB);
+        let partial_fusion = fusion(tabA.slice(1, tabA.length), tabB);
+        let tab_concat = tabA[0].concat(partial_fusion);
+        return tab_concat;
     }
     else {
-        return tabB[0].concat.fusion(tabB.slice(tabA, tabB.slice(tabB.length)));
+        let partial_fusion = fusion(tabB.slice(tabA, tabB.length));
+        let tab_concat = tabB[0].concat(partial_fusion);
+        return tab_concat;
     }
 }
 triFusion(tab);
@@ -108,9 +131,11 @@ console.log(tab);
 
 //========================Tri rapide =======================//
 
-function triRapide(tab, first, last) {
-    if (first < last) {
-        pi = part(tab, first, last);
-        triRapide
-    }
-}
+// function triRapide(tab, first, last) {
+//     tab = [...tab];
+//     const n = tab.length;
+//     if (first < last) {
+//         pi = part(tab, first, last);
+//         triRapide
+//     }
+// }
