@@ -68,21 +68,21 @@ function swap(tab, i, j) {
 //========================Tri par bulles =======================//
 
 
-function triBulle(tab) {
-    const n = tab.length;
-    let permut = true;
-    while (permut) {
-        permut = false;
-        for (let i = 0; i < n - 1; i++) {
-            if (tab[i] > tab[i + 1]) {
-                swap(tab, i, i + 1);
-                permut = true;
-            }
-        }
-    }
-}
-triBulle(tab);
-console.log(tab);
+// function triBulle(tab) {
+//     const n = tab.length;
+//     let permut = true;
+//     while (permut) {
+//         permut = false;
+//         for (let i = 0; i < n - 1; i++) {
+//             if (tab[i] > tab[i + 1]) {
+//                 swap(tab, i, i + 1);
+//                 permut = true;
+//             }
+//         }
+//     }
+// }
+// triBulle(tab);
+// console.log(tab);
 
 //========================Tri par fusion =======================//
 
@@ -124,14 +124,23 @@ console.log(tab);
 
 //========================Tri rapide =======================//
 
-// function triRapide(tab, first, last) {
-//     tab = [...tab];
-//     const n = tab.length;
-//     if (first < last) {
-//         pi = part(tab, first, last);
-//         triRapide(tab, first, pi - 1);
-//         triRapide(tab, pi + 1, last);
-//     }
-// }
+function triRapide(tab, first, last) {
+    tab = [...tab];
+    if (first < last) {
+        pi = part(tab, first, last);
+        triRapide(tab, first, pi - 1);
+        triRapide(tab, pi + 1, last);
+    }
+}
 
-// function partition(tab, first, last, kingpin)
+function partition(tab, first, last, kingpin) {
+    kingpin = tab(last);
+    let j = first;
+    for (i = first; i < last - 1; i++) {
+        if (tab[i <= kingpin]) {
+            swap(tab, i, j);
+            return j;
+        }
+    }
+}
+console.log(tab);
