@@ -124,23 +124,24 @@ function swap(tab, i, j) {
 
 //========================Tri rapide =======================//
 
-function triRapide(tab, first, last) {
+function triRapide(tab, first = 0, last = tab.length) {
     tab = [...tab];
     if (first < last) {
-        pi = part(tab, first, last);
+        pi = partitionner(tab, first, last);
         triRapide(tab, first, pi - 1);
         triRapide(tab, pi + 1, last);
     }
 }
 
-function partition(tab, first, last, kingpin) {
-    kingpin = tab(last);
+function partitionner(tab, first, last) {
     let j = first;
     for (i = first; i < last - 1; i++) {
-        if (tab[i <= kingpin]) {
+        if (tab[i] <= last) {
             swap(tab, i, j);
-            return j;
+            j = j + 1;
         }
     }
+    swap(tab, last, j);
+    return j;
 }
-console.log(tab);
+console.log(triRapide(tab));
